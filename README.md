@@ -48,6 +48,11 @@ Note: React app is hosted on default port 3000 and Backend express app is hosted
 * Mongoose
 * Body parser
 * Multer
+* Nodemon
+* Bcrypt
+* Cors
+
+# Screenshots
 
     
   
