@@ -1,4 +1,4 @@
-# story_scape
+# Story Scape
 A blogging platform built on MERN stack.
 
 # Setting up the app
