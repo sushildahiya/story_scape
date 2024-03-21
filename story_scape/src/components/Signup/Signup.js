@@ -1,9 +1,10 @@
 import React, {  useState } from 'react'
 import styles from './sign.module.css'
 import { useAuthValue } from '../../context/userAuthentication';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function Signup() {
   const{handleAuthetication} = useAuthValue()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -47,6 +48,8 @@ function Signup() {
       if (await response.ok) {
         handleAuthetication({userId:data.userId,token:data.token,email:data.email,username:data.username,avatar:data.avatar,contact_no:data.contact_no})
         localStorage.setItem('authetication', JSON.stringify({userId:data.userId,token:data.token,email:data.email,username:data.username,avatar:data.avatar}));
+        navigate('/user-avatar')
+
       } else {
         // Handle signup error
         setError(data.error)

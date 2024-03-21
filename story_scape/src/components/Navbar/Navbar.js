@@ -8,7 +8,10 @@ import { LuPenSquare } from "react-icons/lu";
 
 function Navbar() {
     const { authetication, handleAuthetication } = useAuthValue()
-    const handleLogout = () => { handleAuthetication(null) }
+    const handleLogout = () => { 
+        handleAuthetication(null)
+        localStorage.removeItem('authetication');
+    }
     return (
         <header>
             <nav className={styles.headerContainer}>

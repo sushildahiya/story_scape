@@ -1,15 +1,17 @@
 import React, {  useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { toolbarOptions } from './quill.config.js'
+import { toolbarOptions } from '../../utils/utils.js'
 import styles from './write.module.css'
 import { Button } from 'primereact/button';
 import TagsInput from './TagsInput.js';
 import { useNavigate } from 'react-router-dom'
 import { useAuthValue} from '../../context/userAuthentication.js'
+import { useDataValue } from '../../context/dataContext.js';
 
 function WritePost() {
   const {authetication} = useAuthValue()
+  const {updateRender} = useDataValue()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [tags, setTags] = useState([])
@@ -28,6 +30,7 @@ function WritePost() {
       }
     })
     if(await response.ok){
+      updateRender()
       navigat('/')
     }
   }

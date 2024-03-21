@@ -16,7 +16,6 @@ const CustomAutheticationContext=({children})=>{
          setAuthetication(items);
         }
     },[])
-
     const handleAuthetication=(user)=>{
         setAuthetication(user)
     }

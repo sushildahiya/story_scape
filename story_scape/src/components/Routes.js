@@ -41,7 +41,7 @@ function Routes() {
             ]
         },{
           path:'/user-avatar',
-          element:<UpdateAvatar/>
+          element:authetication?<UpdateAvatar/>:<Navigate to="/" replace />
         }
         
     ])

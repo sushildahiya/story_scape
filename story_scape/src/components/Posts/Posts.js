@@ -5,7 +5,6 @@ import { useDataValue } from '../../context/dataContext'
 
 function Posts() {
     const {posts} = useDataValue()
-
   return (
 
     <div>{posts.map((item)=><PostCard post={item}/>)}</div>

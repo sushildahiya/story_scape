@@ -19,10 +19,11 @@ const CustomDataContext=({children})=>{
             setPosts(data.posts)
         })()
     },[render])
-   
-    return(<dataContext.Provider value={{posts}}>{children}</dataContext.Provider>)
 
+    const updateRender=()=>{
+        setRender(!render)
+    }
+    return(<dataContext.Provider value={{posts,updateRender}}>{children}</dataContext.Provider>)
 }
-
 export {useDataValue}
 export default CustomDataContext
