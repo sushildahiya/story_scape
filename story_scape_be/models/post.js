@@ -23,7 +23,7 @@ const postSchema = new mongoose.Schema({
    
     page_views:{
         type: Number,
-        default: 0
+        default: 6
     }
 },{
     timestamps:true

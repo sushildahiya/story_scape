@@ -6,5 +6,6 @@ const postController = require('../controllers/post.controller')
 routes.post('/create',postController.createPost)
 routes.get('/all-posts',postController.getAllPost)
 routes.get('/:id',postController.getPostById)
+routes.get('/delete/:id',postController.deleteById)
 
 module.exports=routes
