@@ -38,7 +38,7 @@ function Post() {
         setLoading(true);
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/post/${id}`, { method: 'GET' });
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}post/${id}`, { method: 'GET' });
             const data = await response.json();
             if (await response.ok) {
                 date = `${new Date(data.createAt).getDate()} /${months[new Date(data.createAt).getMonth()]}/${new Date(data.createAt).getFullYear()}`;
@@ -62,7 +62,7 @@ function Post() {
     const handleDelete = async (id, e) => {
         e.preventDefault()
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}${id}`, {
                 method: 'GET', headers: {
                     "Authorization": authetication.token
                 }
@@ -102,7 +102,7 @@ function Post() {
 
                     </div>
                     <div className={styles.userDetails}>
-                        <img src={`${process.env.REACT_APP_BACKEND_ENDPOINT}/${post.userAvatar}`} alt="user-avatar" width="60" height="60" />
+                        <img src={`${process.env.REACT_APP_BACKEND_ENDPOINT}${post.userAvatar}`} alt="user-avatar" width="60" height="60" />
                         <div>
                             <p>{post.username}</p>
                             <p>{post.date}</p>

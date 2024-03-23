@@ -32,7 +32,7 @@ function UpdateAvatar() {
             const formData = new FormData();
             const blob = await fetch(preview).then((r) => r.blob());
             formData.append('avatar', blob, 'avatar.png');
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/user/user-avater`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}user/user-avater`, {
               method: 'POST',
               body: formData,
               headers:{

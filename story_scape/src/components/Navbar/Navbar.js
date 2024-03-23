@@ -61,7 +61,7 @@ function Navbar() {
                                     <button onClick={handleLogout}>Logout</button>
                                 </li>
                                 <li>
-                                    <img src={`${process.env.REACT_APP_BACKEND_ENDPOINT}/${authetication.avatar}`} width="40" height="40" />
+                                    <img src={`${process.env.REACT_APP_BACKEND_ENDPOINT}${authetication.avatar}`} width="40" height="40" />
                                 </li>
                             </>
                         }

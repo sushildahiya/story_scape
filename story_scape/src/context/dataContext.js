@@ -30,7 +30,7 @@ const CustomDataContext=({children})=>{
             setLoading(true);
             try {
                 const options = {method:'GET'};
-                const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/post/all-posts`, options);
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}post/all-posts`, options);
                 const data = await response.json();
                 setPosts(data.posts);
             } catch (error) {
