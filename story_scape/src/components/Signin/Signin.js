@@ -23,7 +23,7 @@ function Signin() {
   const handleSubmit = async (e)=>{
     e.preventDefault()
     try {
-      const response = await fetch(`${process.env.BACKEND_ENDPOINT}/user/create-session`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/user/create-session`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

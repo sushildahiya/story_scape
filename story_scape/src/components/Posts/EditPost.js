@@ -33,7 +33,7 @@ function EditPost() {
 const fetchData = async () => {
     setLoading(true);
     try {
-        const response = await fetch(`${process.env.BACKEND_ENDPOINT}/post/${id}`, { method: 'GET' });
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/post/${id}`, { method: 'GET' });
         const data = await response.json();
         if(await response.ok){
             setTitle(data.title)
@@ -55,7 +55,7 @@ const handleUpdate= async (e)=>{
     if (!title || !description || tags.length === 0) {
       alert("Title, description can't be empty and there should be atlest one tag.")
     }
-    const response = await fetch(`${process.env.BACKEND_ENDPOINT}/post/edit/${id}`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/post/edit/${id}`, {
       method: 'POST',
       body: JSON.stringify({title,description,tags}),
       headers: {

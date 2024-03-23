@@ -28,6 +28,7 @@ module.exports.emailValidation=async(req,res)=>{
 module.exports.createUser=async(req,res)=>{
    const user = await User.findOne({email:req.body.email})
    let hashedPassword = ''
+   console.log('--------------')
    // Data validation
    //Check whether field is empty
    if(req.body.username.length==0 || req.body.email.length==0){
