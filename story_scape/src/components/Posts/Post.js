@@ -13,11 +13,9 @@ import { useDataValue } from '../../context/dataContext';
  * @returns 
  */
 function Post() {
-
     const {authetication}=useAuthValue()
     const [post,setPost]=useState({});
     const [loading,setLoading]=useState(false);
-    const [update,setUpdate]= useState(false)
     const {updateRender}= useDataValue()
     let { id } = useParams();
     const navigate = useNavigate()
@@ -43,17 +41,13 @@ function Post() {
                 date = `${new Date(data.createAt).getDate()} /${months[new Date(data.createAt).getMonth()]}/${new Date(data.createAt).getFullYear()}`;
                 setPost({...data,date});
             }else{
-                navigate(-1)
+                navigate('/')
             }          
         } catch (error) {
             console.error('Error fetching post:', error);
-            navigate(-1)
+            navigate('/')
         }
     };
-    
-    const toggleUpdate=()=>{
-        setUpdate(!update)
-    }
 
     /**
      * Function to delete a post by id and navigate to homepage
@@ -82,7 +76,7 @@ function Post() {
             <h1>{post.title}</h1>
             {authetication&&authetication.userId===post.userId&&
             <div>
-                <Button label={update?"Cancel":"Edit"} severity="secondary" size="small" raised onClick={toggleUpdate}/>
+                <Button label="Edit" severity="secondary" size="small" onClick={()=>navigate(`/edit/${id}`)} raised/>
                 <Button label="Delete" severity="danger" size="small" raised onClick={(e)=>handleDelete(id,e)}/>
             </div>
             }
@@ -102,11 +96,10 @@ function Post() {
         </div>
         <div className={styles.descriptionContainer}>
         <ReactQuill 
-        theme="snow" modules={{toolbar:false}} 
-        value={post.description}
-        readOnly={true} 
-      />
-        
+      theme="snow" modules={{toolbar:false}} 
+      value={post.description}
+      readOnly={true}
+    />
         </div>
     </div>
 }

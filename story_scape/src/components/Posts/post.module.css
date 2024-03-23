@@ -32,3 +32,10 @@
     justify-content: space-between;
     align-items: center;
 }
+.header>h1{
+    width:70%;
+    text-wrap: wrap;
+}
+.header > div> button{
+    margin-right:.3em;
+}

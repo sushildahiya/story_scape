@@ -11,6 +11,7 @@ import Posts from './Posts/Posts'
 import Post from './Posts/Post'
 import { useAuthValue } from '../context/userAuthentication'
 import ErrorPage from './ErrorPage/ErrorPage'
+import EditPost from './Posts/EditPost'
 
 function Routes() {
   const {authetication}= useAuthValue()
@@ -40,6 +41,10 @@ function Routes() {
                {
                 path:'/post/:id',
                 element:<Post/>
+               },
+               {
+                path:'/edit/:id',
+                element:authetication?<EditPost/>:<Navigate to="/sign-in" replace />
                },
                {path:'/story',element:<Story/>}
             ]
