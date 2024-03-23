@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './story.module.css'
+import styles from '../../styles/story.module.css'
 
 /**
  * Story component

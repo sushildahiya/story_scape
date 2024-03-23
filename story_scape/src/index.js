@@ -3,24 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import CustomAutheticationContext from './context/userAuthentication';
-import { PrimeReactProvider } from 'primereact/api';
-import 'primereact/resources/primereact.css';
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import CustomDataContext from './context/dataContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 /**
- * Providing authetication context, data context and prime react provider
+ * Providing authetication context and using toast container
  */
 root.render(
   <React.StrictMode>
     <CustomAutheticationContext>
-      <CustomDataContext>
-    <PrimeReactProvider>
     <App />
-    </PrimeReactProvider>
-    </CustomDataContext>
+    <ToastContainer theme="colored" autoClose={2000}/>
     </CustomAutheticationContext>
-  </React.StrictMode>
+    </React.StrictMode>
 );

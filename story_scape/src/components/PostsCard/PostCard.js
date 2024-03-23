@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './postcard.module.css'
+import styles from '../../styles/postcard.module.css'
 import ReactQuill from 'react-quill';
 import { useNavigate } from 'react-router-dom';
 import {months} from '../../utils/utils'
@@ -22,7 +22,7 @@ function PostCard({post}) {
   return (
     <div className={styles.cardContainer} onClick={()=>handlePostClick(post._id)}>
         <div className={styles.userDetails}>
-            <img src={`http://localhost:8000/${post.userId.avatar}`} alt="user-image" width="30" height="30"/>
+            <img src={`http://localhost:8000/${post.userId.avatar}`} alt="user-avatar" width="30" height="30"/>
             <p>{post.userId.username}</p>
             <p>{date}</p>
         </div>

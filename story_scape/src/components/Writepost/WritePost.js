@@ -2,12 +2,13 @@ import React, {  useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { toolbarOptions } from '../../utils/utils.js'
-import styles from './write.module.css'
+import styles from '../../styles/write.module.css'
 import { Button } from 'primereact/button';
 import TagsInput from './TagsInput.js';
 import { useNavigate } from 'react-router-dom'
 import { useAuthValue} from '../../context/userAuthentication.js'
 import { useDataValue } from '../../context/dataContext.js';
+import { toast } from 'react-toastify';
 
 function WritePost() {
   const {authetication} = useAuthValue()
@@ -23,7 +24,7 @@ function WritePost() {
    */
   const handlePublish = async (e) => {
     e.preventDefault()
-    if (!title || !description || tags.length == 0) {
+    if (!title || !description || tags.length === 0) {
       alert("Title, description can't be empty and there should be atlest one tag.")
     }
     const response = await fetch('http://localhost:8000/post/create', {
@@ -36,7 +37,10 @@ function WritePost() {
     })
     if(await response.ok){
       updateRender()
+      toast.success('Post created successfully')
       navigate('/')
+    }else{
+      toast.error("Error creating the post.")
     }
   }
   

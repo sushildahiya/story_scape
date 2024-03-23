@@ -1,9 +1,10 @@
 import React from 'react'
-import styles from './navbar.module.css'
+import styles from '../../styles/navbar.module.css'
 import logo from '../../assets/images/logo.png'
 import { useAuthValue } from '../../context/userAuthentication'
 import { Link } from 'react-router-dom'
 import { LuPenSquare } from "react-icons/lu";
+import { toast } from 'react-toastify'
 
 /**
  * Navbar component
@@ -17,6 +18,7 @@ function Navbar() {
     const handleLogout = () => {
         handleAuthetication(null)
         localStorage.removeItem('authetication');
+        toast.success('User logged out successfully.')
     }
 
     return (

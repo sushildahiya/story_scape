@@ -3,12 +3,12 @@ import { toolbarOptions } from '../../utils/utils';
 import { useAuthValue } from '../../context/userAuthentication';
 import { useDataValue } from '../../context/dataContext';
 import { useNavigate, useParams } from 'react-router-dom';
-import styles from '../Writepost/write.module.css'
+import styles from '../../styles/write.module.css'
 import TagsInput from '../Writepost/TagsInput';
 import { Button } from 'primereact/button';
 import ReactQuill from 'react-quill';
-
-
+import { toast } from 'react-toastify';
+import { DNA } from 'react-loader-spinner'
 
 function EditPost() {
     const {authetication}=useAuthValue()
@@ -21,18 +21,17 @@ function EditPost() {
     const navigate = useNavigate()
 
   /**
-     * API call to fetch particular post by id and set loading state
+     * API call to fetch particular post by id \
      */
   useEffect(()=>{
-    setLoading(true);
     fetchData(); 
-    setLoading(false);
 },[id])
 
 /**
  * Function to fetch post by ID and tranform createdAt date to date for render in UI
  */
 const fetchData = async () => {
+    setLoading(true);
     try {
         const response = await fetch(`http://localhost:8000/post/${id}`, { method: 'GET' });
         const data = await response.json();
@@ -47,6 +46,8 @@ const fetchData = async () => {
         console.error('Error fetching post:', error);
         navigate('/')
     }
+    setLoading(false);
+
 };
 
 const handleUpdate= async (e)=>{
@@ -64,13 +65,23 @@ const handleUpdate= async (e)=>{
     })
     if(await response.ok){
       updateRender()
+      toast.success("Post updated successfully")
       navigate('/')
+    }else{
+        toast.error("Error updating post.")
     }
 }
 
 return (
 <>
-{!loading &&
+{loading ? <div className={styles.loader}>
+                    <DNA
+                        visible={true}
+                        height="120"
+                        width="120"
+                        ariaLabel="dna-loading"
+                        wrapperClass="dna-wrapper"
+                    /></div>:
     <div className={styles.writeContainer}>
     <div className={styles.headerContainer}>
       <div>

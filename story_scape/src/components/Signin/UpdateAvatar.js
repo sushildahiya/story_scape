@@ -4,8 +4,9 @@ import profile from '../../assets/images/user_avatar.png'
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { useAuthValue } from '../../context/userAuthentication';
-import styles from '../Signup/sign.module.css'
+import styles from '../../styles/sign.module.css'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function UpdateAvatar() {
     const [preview, setPreview] = useState(null);
@@ -41,9 +42,11 @@ function UpdateAvatar() {
             const data = await response.json()
             if (response.ok) {
               handleAuthetication({...authetication,avatar:data.avatar })
+              toast.success('User image updated successfully')
               navigate('/')
             } else {
               console.error('Failed to update avatar');
+              toast.error('Error uploading image.')
             }
           }
         } catch (error) {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { tagsList } from "../../utils/utils";
-import styles from "./write.module.css";
+import styles from "../../styles/write.module.css";
 
 /**
  * Component for setting tags for post and display suggestions

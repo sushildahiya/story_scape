@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import styles from '../Signup/sign.module.css'
+import styles from '../../styles/sign.module.css'
 import { Link } from 'react-router-dom'
 import { useAuthValue } from '../../context/userAuthentication'
+import { toast } from 'react-toastify'
 function Signin() {
   const [formData,setFormData]=useState({
     email:'',
@@ -33,12 +34,15 @@ function Signin() {
       if (await response.ok) {
         handleAuthetication(data)
         localStorage.setItem('authetication', JSON.stringify(data));
+        toast.success("User logged in successfully.")
       } else {
         // Handle signup error
         setError(data.error)
+        toast.error('Wrong email or password.')
       }
     } catch (error) {
       console.error('Error during signin:', error);
+      toast.error('Error signing in')
     }
   }
   return (

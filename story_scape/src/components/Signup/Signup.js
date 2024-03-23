@@ -1,7 +1,8 @@
 import React, {  useState } from 'react'
-import styles from './sign.module.css'
+import styles from '../../styles/sign.module.css'
 import { useAuthValue } from '../../context/userAuthentication';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 function Signup() {
   const{handleAuthetication} = useAuthValue()
   const navigate = useNavigate()
@@ -28,6 +29,7 @@ function Signup() {
     const data = await response.json()
     if(! await response.ok){
       setError(data.error)
+      toast.error("Validation Error")
     }
   }
 
@@ -64,21 +66,23 @@ function Signup() {
       if (await response.ok) {
         handleAuthetication(data)
         localStorage.setItem('authetication', JSON.stringify(data));
+        toast.success('User created successfully.')
         navigate('/user-avatar')
 
       } else {
         // Handle signup error of data validations
         setError(data.error)
+        toast.error("Validation error")
         console.error('Signup failed');
       }
     } catch (error) {
       console.error('Error during signup:', error);
+      toast.error("Error creating the user.")
     }
   }
   return (  
     <div className={styles.signContainer}>
-      			<h1>Create Account</h1>
-
+      <h1>Create Account</h1>
 		<form onSubmit={handleSubmit}>
 			<input type="text" placeholder="Name" name="username" value={formData.username} onFocus={clearError}
           onChange={handleChange}/>
