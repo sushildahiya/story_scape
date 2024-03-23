@@ -3,6 +3,7 @@ A blogging platform built on MERN stack.
 # Hosted URL
 
   Frontend URL: https://story-scape-git-main-sushils-projects-5ce2d618.vercel.app/
+  
   Backend URL: https://story-scape.onrender.com
 
   Note: Images will not be visible on hosted URL due to render.com issue as disk persistent is a paid service.
