@@ -19,7 +19,7 @@ function Signup() {
    * Check email unqiness while creating a user
    */
   const handleEmailUnqiness = async ()=>{
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}user/unqiue-email`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/user/unqiue-email`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ function Signup() {
   const handleSubmit=async (e)=>{
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}user/create-user`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/user/create-user`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

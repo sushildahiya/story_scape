@@ -22,7 +22,7 @@ function PostCard({post}) {
   return (
     <div className={styles.cardContainer} onClick={()=>handlePostClick(post._id)}>
         <div className={styles.userDetails}>
-            <img src={`${process.env.REACT_APP_BACKEND_ENDPOINT}${post.userId.avatar}`} alt="user-avatar" width="30" height="30"/>
+            <img src={`${process.env.REACT_APP_BACKEND_ENDPOINT}/${post.userId.avatar}`} alt="user-avatar" width="30" height="30"/>
             <p>{post.userId.username}</p>
             <p>{date}</p>
         </div>
