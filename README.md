@@ -1,6 +1,7 @@
 # Story Scape
 A blogging platform built on MERN stack.
-
+# Client side hosting
+  https://story-scape-git-main-sushils-projects-5ce2d618.vercel.app/
 # Setting up the app
 
 ## Pre-requisite:
