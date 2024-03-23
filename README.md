@@ -31,14 +31,20 @@ A blogging platform built on MERN stack.
 
     ### $ npm i --force
 
-7. Create a .env file inside "story_scape_be" directory with following key-value pairs.
+7. Create a .env file inside "story_scape" directory with following key-value pairs.
 
-    # DATABASE_URL=<YOUR MONGODB URL>
-    # JWT_KEY=<YOUR JWT SCERET KEY>
+    BACKEND_ENDPOINT=<ENDPOINT>
 
-8. Once node modules are installed, open to terminal and navigate inside the respective directory.
+Note: In case if user is hosting the backend from local system use BACKEND_ENDPOINT=http://localhost:8000
+ 
+8. Create a .env file inside "story_scape_be" directory with following key-value pairs.
 
-9. Run below command.
+     DATABASE_URL=<YOUR_MONGODB_URL>
+     JWT_KEY=<YOUR_JWT_SECERET_KEY>
+
+9. Once node modules are installed, open to terminal and navigate inside the respective directory.
+
+10. Run below command.
 
     ### $ npm start
 
