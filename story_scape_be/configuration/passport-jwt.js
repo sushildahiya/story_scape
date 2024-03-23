@@ -1,12 +1,17 @@
+/**
+ * Imports library and models
+ */
 const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy
 const   ExtractJwt = require('passport-jwt').ExtractJwt;
-
 const User = require('../models/user')
 
+/**
+ * Configur passport JWT for extraction strategy
+ */
 const opts={
     jwtFromRequest : ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey : 'story_156#Scape'
+    secretOrKey : process.env.JWT_KEY
 }
 passport.use(new JwtStrategy(opts, async function(jwt_payload, done) {
     try{
@@ -22,7 +27,6 @@ passport.use(new JwtStrategy(opts, async function(jwt_payload, done) {
         console.log('Error in finding user in jwt', err);
         return done(err, false);
     }
-   
 }));
 
 

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 
-
-
+/**
+ * Schema of a post
+ */
 const postSchema = new mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
@@ -28,9 +29,6 @@ const postSchema = new mongoose.Schema({
 },{
     timestamps:true
 })
-
-
-
-
+// Create a model for post schema
 const Post = mongoose.model('Post',postSchema)
 module.exports=Post

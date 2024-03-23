@@ -1,17 +1,24 @@
+require('dotenv').config();
 const express = require('express')
-const port = 8000
 const server = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const db = require('./configuration/mongoose')
+const port = process.env.PORT
 
 server.use(cors())
+// Use body parser to extract data from request body
 server.use(bodyParser.urlencoded({extended:true}))
 server.use(bodyParser.json())
+// Expose static files 
 server.use(express.static(__dirname));
 
+//Import routes
 server.use('/',require('./routes'))
 
+/**
+ * Listen on a port
+ */
 server.listen(port,(err)=>
 {if(err)
     console.log("Error in creating server ",err)
