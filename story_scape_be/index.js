@@ -4,7 +4,7 @@ const server = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const db = require('./configuration/mongoose')
-const port = process.env.PORT
+const port = 8000
 
 server.use(cors())
 // Use body parser to extract data from request body

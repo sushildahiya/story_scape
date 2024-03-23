@@ -15,19 +15,34 @@ A blogging platform built on MERN stack.
 
 3. Now run below command to install node modules needed to run the app.
 
-    ### $ npm i --force
+    ### $ npm i
 
-4. Navigate inside the other directory to install node modules for backend using terminal.
-
-5. Run below command
+       OR
 
     ### $ npm i --force
 
-6. Once node modules are installed, open to terminal and navigate inside the respective directory.
+5. Navigate inside the other directory to install node modules for backend using terminal.
 
-7. Run below command.
+6. Run below command
+
+    ### $ npm i
+
+       OR
+
+    ### $ npm i --force
+
+7. Create a .env file inside "story_scape_be" directory with following key-value pairs.
+
+    # DATABASE_URL=<YOUR MONGODB URL>
+    # JWT_KEY=<YOUR JWT SCERET KEY>
+
+8. Once node modules are installed, open to terminal and navigate inside the respective directory.
+
+9. Run below command.
 
     ### $ npm start
+
+
 
 Note: React app is hosted on default port 3000 and Backend express app is hosted on default port 8000.4
 
@@ -39,6 +54,7 @@ Note: React app is hosted on default port 3000 and Backend express app is hosted
 * React icons
 * React quill
 * React avatar edit
+* React toastify
 
 ## * Server side(NodeJS):
 
