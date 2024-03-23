@@ -2,7 +2,6 @@
     width:50%;
     margin:auto;
 }
-
 .userDetails{
     display:flex;
     justify-content: flex-start;
@@ -22,15 +21,12 @@
     border-bottom: 1px solid rgb(224, 213, 213);
 }
 .viewContainer >div>p{
-    /* padding:0px; */
     margin:.4em;
     font-size: x-large;
 }
 .viewContainer >div>p>span{
-    /* padding:0px; */
     margin-left:.4em;
 }
-
 .header{
     display: flex;
     justify-content: space-between;

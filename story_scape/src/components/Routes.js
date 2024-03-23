@@ -10,14 +10,18 @@ import UpdateAvatar from './Signin/UpdateAvatar'
 import Posts from './Posts/Posts'
 import Post from './Posts/Post'
 import { useAuthValue } from '../context/userAuthentication'
+import ErrorPage from './ErrorPage/ErrorPage'
 
 function Routes() {
   const {authetication}= useAuthValue()
-
+    /**
+     * Programmatical route creation with proper routing in case of no authentication and error handling
+     */
     const router = createBrowserRouter([
         {
             path:'/',
             element:<Home/>,
+            errorElement:<ErrorPage/>,
             children:[
                 {path:'/',
                 element:<Posts/>},

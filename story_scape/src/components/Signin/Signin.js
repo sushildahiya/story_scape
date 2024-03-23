@@ -31,9 +31,8 @@ function Signin() {
       });
       const data = await response.json()
       if (await response.ok) {
-        handleAuthetication({userId:data.userId,token:data.token,email:data.email,username:data.username,avatar:data.avatar,contact_no:data.contact_no})
-        localStorage.setItem('authetication', JSON.stringify({userId:data.userId,username:data.username,token:data.token,email:data.email,username:data.username,avatar:data.avatar}));
-
+        handleAuthetication(data)
+        localStorage.setItem('authetication', JSON.stringify(data));
       } else {
         // Handle signup error
         setError(data.error)

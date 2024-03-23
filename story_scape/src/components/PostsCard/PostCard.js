@@ -5,11 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import {months} from '../../utils/utils'
 
 function PostCard({post}) {
+    
+    // Navigate hook to custom navigation to a URL
     const navigate =useNavigate()
+
+    /** Convert timestamp to a date format */
     var date = `${new Date(post.userId.createdAt).getDate()} /${months[new Date(post.userId.createdAt).getMonth()]}/${new Date(post.userId.createdAt).getFullYear()}`
 
+    /**
+     * Handler to handle click on a post card 
+     * @param {*} id 
+     */
     const handlePostClick=(id)=>{
-            navigate(`/post/${id}`)
+      navigate(`/post/${id}`)
     }
   return (
     <div className={styles.cardContainer} onClick={()=>handlePostClick(post._id)}>
@@ -20,11 +28,12 @@ function PostCard({post}) {
         </div>
         <div className={styles.postDetail}>
             <h2>{post.title}</h2>
+          {/* ReactQuill to render description as created in a post and making quill read only. */}
             <ReactQuill 
         theme="snow" modules={{ toolbar: false }} 
         bounds="#parent"
         value={post.description}
-        readOnly={true} // Set readOnly to true if you only want to display the text
+        readOnly={true} 
       />
         </div>
     </div>

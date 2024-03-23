@@ -8,8 +8,12 @@ import { useAuthValue } from '../../context/userAuthentication';
 import { Button } from 'primereact/button';
 import { useDataValue } from '../../context/dataContext';
 
-
+/**
+ * Component to display a post by id
+ * @returns 
+ */
 function Post() {
+
     const {authetication}=useAuthValue()
     const [post,setPost]=useState({});
     const [loading,setLoading]=useState(false);
@@ -18,12 +22,19 @@ function Post() {
     let { id } = useParams();
     const navigate = useNavigate()
     var date;
+
+    /**
+     * API call to fetch particular post by id and set loading state
+     */
     useEffect(()=>{
         setLoading(true);
         fetchData(); 
         setLoading(false);
     },[id])
 
+    /**
+     * Function to fetch post by ID and tranform createdAt date to date for render in UI
+     */
     const fetchData = async () => {
         try {
             const response = await fetch(`http://localhost:8000/post/${id}`, { method: 'GET' });
@@ -31,29 +42,36 @@ function Post() {
             if(await response.ok){
                 date = `${new Date(data.createAt).getDate()} /${months[new Date(data.createAt).getMonth()]}/${new Date(data.createAt).getFullYear()}`;
                 setPost({...data,date});
-            }           
+            }else{
+                navigate(-1)
+            }          
         } catch (error) {
             console.error('Error fetching post:', error);
+            navigate(-1)
         }
     };
     
     const toggleUpdate=()=>{
         setUpdate(!update)
     }
+
+    /**
+     * Function to delete a post by id and navigate to homepage
+     * @param {*} id 
+     * @param {*} e 
+     */
     const handleDelete = async (id,e)=>{
         e.preventDefault()
         try {
             const response = await fetch(`http://localhost:8000/post/delete/${id}`, { method: 'GET',  headers: {
                 "Authorization": authetication.token}});
-            const data = await response.json();
             if(await response.ok){
                 updateRender()
-                navigate('/')
             }           
         } catch (error) {
             console.error('Error fetching post:', error);
-            navigate('/')
         }
+        navigate('/')
     }
 
   return (
@@ -81,9 +99,7 @@ function Post() {
             <div>
                 <p><FaHandsClapping /><span>{post.post_views}</span></p>
             </div>
-        
         </div>
-       
         <div className={styles.descriptionContainer}>
         <ReactQuill 
         theme="snow" modules={{toolbar:false}} 

@@ -5,22 +5,23 @@
 }
 .signContainer{
     margin:auto;
-    width:30%;
+    width:25%;
 }
 .signContainer >h1{
     text-align: center;
 }
-.signContainer >form>input{
+.signContainer >form{
     width: 100%;
+}
+.signContainer >form>input{
+    width: 80%;
     padding:.7em 1.5em;
     margin:.5em;
-   
 }
-
 .signContainer>form>button{
     margin: .7em;
     font-size: x-large;
-    width:70%;
+    width:60%;
     background-color: rgb(119, 187, 226);
     color: white;
 }

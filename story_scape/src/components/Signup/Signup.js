@@ -14,6 +14,9 @@ function Signup() {
   });
   const [error,setError]=useState(null)
   
+  /**
+   * Check email unqiness while creating a user
+   */
   const handleEmailUnqiness = async ()=>{
     const response = await fetch('http://localhost:8000/user//unqiue-email', {
       method: 'POST',
@@ -27,13 +30,26 @@ function Signup() {
       setError(data.error)
     }
   }
+
+  /**
+   * Method to clear validation error 
+   */
   const clearError = ()=>{
     setError(null)
   }
 
+  /**
+   * Method to handle form input field changes
+   * @param {*} e 
+   */
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  /**
+   * Handles form submission
+   * @param {*} e 
+   */
   const handleSubmit=async (e)=>{
     e.preventDefault();
     try {
@@ -46,12 +62,12 @@ function Signup() {
       });
       const data = await response.json()
       if (await response.ok) {
-        handleAuthetication({userId:data.userId,token:data.token,email:data.email,username:data.username,avatar:data.avatar,contact_no:data.contact_no})
-        localStorage.setItem('authetication', JSON.stringify({userId:data.userId,token:data.token,email:data.email,username:data.username,avatar:data.avatar}));
+        handleAuthetication(data)
+        localStorage.setItem('authetication', JSON.stringify(data));
         navigate('/user-avatar')
 
       } else {
-        // Handle signup error
+        // Handle signup error of data validations
         setError(data.error)
         console.error('Signup failed');
       }
@@ -59,8 +75,8 @@ function Signup() {
       console.error('Error during signup:', error);
     }
   }
-  return (
-    <div class={styles.signContainer}>
+  return (  
+    <div className={styles.signContainer}>
       			<h1>Create Account</h1>
 
 		<form onSubmit={handleSubmit}>

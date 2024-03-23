@@ -6,15 +6,24 @@ import { Dialog } from 'primereact/dialog';
 import { useAuthValue } from '../../context/userAuthentication';
 import styles from '../Signup/sign.module.css'
 import { useNavigate } from 'react-router-dom';
+
 function UpdateAvatar() {
     const [preview, setPreview] = useState(null);
     const [visible, setVisible] = useState(false);
     const {authetication,handleAuthetication} = useAuthValue()
-    const navigat = useNavigate()
+    const navigate = useNavigate()
+
+    /**
+     * Handles upload image crop and set preview
+     * @param {*} preview 
+     */
     const onCrop = (preview) => {
         setPreview(preview);
       };
 
+      /** 
+       * Handles upload of avatar
+       */
       const handleUpdateAvatar = async () => {
         try {
           // Check if preview is not null to prevent sending empty image data
@@ -27,14 +36,12 @@ function UpdateAvatar() {
               body: formData,
               headers:{
                 "Authorization":authetication.token,
-                // "Content-Type":"multipart/form-data"
               }
-              // Add headers if needed, e.g., authorization headers
             });
             const data = await response.json()
             if (response.ok) {
               handleAuthetication({...authetication,avatar:data.avatar })
-                navigat('/')
+              navigate('/')
             } else {
               console.error('Failed to update avatar');
             }
@@ -47,11 +54,9 @@ function UpdateAvatar() {
      
   return (
     <div className={styles.updateAvatarContainer}>
-
-    
     <div className={styles.avatarContainer}>
         <div className={styles.updateAvatarContainer}>
-        <img src={preview?preview:profile} width='300' height="300"/>
+        <img src={preview?preview:profile} width='300' height="300" alt="user-avatar"/>
         <Button label="Upload" icon="pi pi-external-link"  severity="secondary" onClick={() => setVisible(true)} />
 
         <div className="card flex justify-content-center">

@@ -1,10 +1,12 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Navbar'
 import { Outlet } from 'react-router-dom'
-import { useAuthValue } from '../context/userAuthentication'
 
+
+/**
+ * Home page component
+ */
 function Home() {
-  const {authetication}=useAuthValue()
   return (
     <>
     <Navbar/>

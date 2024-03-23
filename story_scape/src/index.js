@@ -10,6 +10,9 @@ import CustomDataContext from './context/dataContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+/**
+ * Providing authetication context, data context and prime react provider
+ */
 root.render(
   <React.StrictMode>
     <CustomAutheticationContext>

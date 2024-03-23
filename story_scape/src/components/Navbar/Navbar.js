@@ -5,13 +5,20 @@ import { useAuthValue } from '../../context/userAuthentication'
 import { Link } from 'react-router-dom'
 import { LuPenSquare } from "react-icons/lu";
 
-
+/**
+ * Navbar component
+ * @returns 
+ */
 function Navbar() {
     const { authetication, handleAuthetication } = useAuthValue()
-    const handleLogout = () => { 
+    /**
+     * Handles the logout functionality by removing the data from local strorage and making authetication state as null
+     */
+    const handleLogout = () => {
         handleAuthetication(null)
         localStorage.removeItem('authetication');
     }
+
     return (
         <header>
             <nav className={styles.headerContainer}>

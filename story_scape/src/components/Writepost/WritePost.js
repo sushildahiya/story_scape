@@ -15,7 +15,12 @@ function WritePost() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [tags, setTags] = useState([])
-  const navigat = useNavigate()
+  const navigate = useNavigate()
+
+  /**
+   * Handles publish button click to add the post
+   * @param {*} e 
+   */
   const handlePublish = async (e) => {
     e.preventDefault()
     if (!title || !description || tags.length == 0) {
@@ -31,13 +36,22 @@ function WritePost() {
     })
     if(await response.ok){
       updateRender()
-      navigat('/')
+      navigate('/')
     }
   }
+  
+  /**
+   * Handles cancel button click to cancel the post
+   */
   const handleCancelButton = () => {
-      navigat('/')
+      navigate('/')
     }
 
+    /**
+     * Handles the changes in input data
+     * @param {*} setMethod 
+     * @param {*} e 
+     */
     const handleChange = (setMethod, e) => {
         setMethod(e.target.value);
     };

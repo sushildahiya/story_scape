@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^5.3.3",
     "primereact": "^10.5.3",
     "react": "^18.2.0",
-    "react-autocomplete": "^1.8.1",
     "react-avatar-edit": "^1.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",

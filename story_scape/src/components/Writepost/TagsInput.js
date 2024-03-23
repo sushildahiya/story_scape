@@ -2,9 +2,19 @@ import React, { useState } from "react";
 import { tagsList } from "../../utils/utils";
 import styles from "./write.module.css";
 
+/**
+ * Component for setting tags for post and display suggestions
+ * @param {*} param0 
+ * @returns 
+ */
 function TagsInput({ tags, setTags }) {
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+
+  /**
+   * Handles the change in input value
+   * @param {*} event 
+   */
   const handleInputChange = (event) => {
     const value = event.target.value;
     setInputValue(value);
@@ -18,10 +28,14 @@ function TagsInput({ tags, setTags }) {
         // Limit suggestions to 5
         setSuggestions(matchingTags.slice(0, 5));
       } else {
-        setSuggestions([]); // Clear suggestions if no input
+        setSuggestions([]); 
       }
   };
 
+  /**
+   * Handles key press for entering the custom tag
+   * @param {*} event 
+   */
   const handleInputKeyDown = (event) => {
     if (tags.length < 5) {
       if (event.key === "Enter") {
@@ -29,16 +43,24 @@ function TagsInput({ tags, setTags }) {
         if (tag && !tags.includes(tag)) {
           setTags([...tags, tag]);
           setInputValue("");
-          setSuggestions([]); // Clear suggestions
+          setSuggestions([]);
         }
       }
     }
   };
 
+  /**
+   * Handles the remove of tag when X is clicked
+   * @param {*} tagToRemove 
+   */
   const handleTagRemove = (tagToRemove) => {
     setTags(tags.filter((tag) => tag !== tagToRemove));
   };
 
+  /**
+   * Display suggested predefined tags
+   * @param {*} tag 
+   */
   const handleSuggestionClick = (tag) => {
     if (tags.length < 5) {
       setTags([...tags, tag]);

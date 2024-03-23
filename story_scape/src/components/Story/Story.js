@@ -1,5 +1,10 @@
 import React from 'react'
 import styles from './story.module.css'
+
+/**
+ * Story component
+ * @returns 
+ */
 function Story() {
   return (
     <div className={styles.storyContainer}>
