@@ -12,7 +12,6 @@ import ReactQuill from 'react-quill';
 
 function EditPost() {
     const {authetication}=useAuthValue()
-    const [post,setPost]=useState({});
     const [loading,setLoading]=useState(false);
     const [tags,setTags]=useState([])
     const [title,setTitle]=useState()
@@ -20,7 +19,6 @@ function EditPost() {
     const {updateRender}= useDataValue()
     let { id } = useParams()
     const navigate = useNavigate()
-    var date;
 
   /**
      * API call to fetch particular post by id and set loading state
@@ -51,6 +49,24 @@ const fetchData = async () => {
     }
 };
 
+const handleUpdate= async (e)=>{
+    e.preventDefault()
+    if (!title || !description || tags.length === 0) {
+      alert("Title, description can't be empty and there should be atlest one tag.")
+    }
+    const response = await fetch(`http://localhost:8000/post/edit/${id}`, {
+      method: 'POST',
+      body: JSON.stringify({title,description,tags}),
+      headers: {
+        "Authorization": authetication.token,
+        "Content-Type":"application/json"
+      }
+    })
+    if(await response.ok){
+      updateRender()
+      navigate('/')
+    }
+}
 
 return (
 <>
@@ -62,7 +78,7 @@ return (
 
       </div>
       <div>
-        <Button label="Update" icon="pi pi-external-link"  />
+        <Button label="Update" icon="pi pi-external-link" onClick={handleUpdate} />
         <Button label="Cancel" icon="pi pi-external-link" onClick={()=>navigate(-1)} severity="danger" />
       </div>
     </div>

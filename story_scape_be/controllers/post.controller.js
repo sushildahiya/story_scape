@@ -44,15 +44,15 @@ module.exports.getAllPost = async (req, res) => {
 }
 
 module.exports.getPostById = async (req, res) => {
-  try{
-  const post = await Post.findById(req.params.id).populate('userId')
-  const newPost = {
-    id: post._id, title: post.title, description: post.description, tags: post.tags, username: post.userId.username, post_views: post.page_views, userId: post.userId._id, userAvatar: post.userId.avatar, createAt: post.userId.createdAt
+  try {
+    const post = await Post.findById(req.params.id).populate('userId')
+    const newPost = {
+      id: post._id, title: post.title, description: post.description, tags: post.tags, username: post.userId.username, post_views: post.page_views, userId: post.userId._id, userAvatar: post.userId.avatar, createAt: post.userId.createdAt
+    }
+    return res.status(200).json(newPost)
+  } catch (err) {
+    return res.status(404).json({ error: "Not found" })
   }
-  return res.status(200).json(newPost)
-}catch(err){
-  return res.status(404).json({error:"Not found"})
-}
 }
 
 module.exports.deleteById = async (req, res) => {
@@ -69,5 +69,19 @@ module.exports.deleteById = async (req, res) => {
 }
 
 module.exports.editPostById = async (req, res) => {
+  console.log("----------------")
+  const token = req.headers.authorization;
+  const userId = extractUserId.extractUserIdFromJWT(token);
+  const post = await Post.findById(req.params.id).populate('userId')
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized' })
+  } else if (post.userId.id !== userId) {
+    return res.status(401).json({ error: 'Invalid User' })
+  }
+  post.title = req.body.title
+  post.description = req.body.description
+  post.tags = req.body.tags
+  post.save()
+  return res.status(200).json({ message: 'success' })
 
 }

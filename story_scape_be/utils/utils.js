@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 module.exports.extractUserIdFromJWT = (token)=>{
     try {
       const decodedToken = jwt.verify(token, 'story_156#Scape');
-      console.log(decodedToken)
       if (decodedToken.userId){
         return decodedToken.userId;
       }else{
