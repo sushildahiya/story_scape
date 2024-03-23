@@ -1,7 +1,12 @@
 # Story Scape
 A blogging platform built on MERN stack.
-# Client side hosting
-  https://story-scape-git-main-sushils-projects-5ce2d618.vercel.app/
+# Hosted URL
+
+  Frontend URL: https://story-scape-git-main-sushils-projects-5ce2d618.vercel.app/
+  Backend URL: https://story-scape.onrender.com
+
+  Note: Images will not be visible on hosted URL due to render.com issue as disk persistent is a paid service.
+  
 # Setting up the app
 
 ## Pre-requisite:
@@ -34,9 +39,9 @@ A blogging platform built on MERN stack.
 
 7. Create a .env file inside "story_scape" directory with following key-value pairs.
 
-    BACKEND_ENDPOINT=<ENDPOINT>
+    REACT_APP_BACKEND_ENDPOINT = <ENDPOINT>
 
-Note: In case if user is hosting the backend from local system use BACKEND_ENDPOINT=http://localhost:8000
+Note: In case if user is hosting the backend from local system use BACKEND_ENDPOINT=http://localhost:8000. Don't use '/' at the end of URL.
  
 8. Create a .env file inside "story_scape_be" directory with following key-value pairs.
 
@@ -48,7 +53,6 @@ Note: In case if user is hosting the backend from local system use BACKEND_ENDPO
 10. Run below command.
 
     ### $ npm start
-
 
 
 Note: React app is hosted on default port 3000 and Backend express app is hosted on default port 8000.4
