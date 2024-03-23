@@ -27,7 +27,7 @@ function WritePost() {
     if (!title || !description || tags.length === 0) {
       alert("Title, description can't be empty and there should be atlest one tag.")
     }
-    const response = await fetch('http://localhost:8000/post/create', {
+    const response = await fetch(`${process.env.BACKEND_ENDPOINT}/post/create`, {
       method: 'POST',
       body: JSON.stringify({title,description,tags}),
       headers: {
