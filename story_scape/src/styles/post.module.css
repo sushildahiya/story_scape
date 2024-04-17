@@ -5,6 +5,10 @@
     justify-content: center;
     align-items: center;
 }
+.postsContainer{
+    width:60%;
+    object-fit: contain;
+}
 .postContainer{
     width:50%;
     margin:auto;
@@ -46,3 +50,4 @@
 .header > div> button{
     margin-right:.3em;
 }
+

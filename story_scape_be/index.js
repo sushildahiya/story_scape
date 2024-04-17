@@ -9,7 +9,7 @@ const port = 8000
 server.use(cors())
 // Use body parser to extract data from request body
 server.use(bodyParser.urlencoded({extended:true}))
-server.use(bodyParser.json())
+server.use(bodyParser.json({ limit: '10mb' }))
 // Expose static files 
 server.use(express.static(__dirname));
 
